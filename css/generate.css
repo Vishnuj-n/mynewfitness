@@ -1,0 +1,11 @@
+/* Styles specific to the generate plan page */
+
+/* Workout plan styles */
+.workout-card {
+    border-left: 4px solid #10B981;
+    transition: transform 0.2s ease;
+}
+
+.workout-card:hover {
+    transform: translateX(5px);
+}

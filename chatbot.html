@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot - FitAi</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom configuration for Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#10B981', // Green
+                        secondary: '#F9FAFB', // White/Light
+                        dark: '#065F46', // Dark Green
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+</head>
+<body class="bg-secondary">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-3">
+                <div class="flex items-center">
+                    <img src="FitAi.png" alt="FitAi Logo" class="h-10 mr-3">
+                    <span class="text-green-600 font-bold text-xl">FitAi</span>
+                </div>                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-600 hover:text-primary transition duration-300">Home</a>
+                    <a href="generate.html" class="text-gray-600 hover:text-primary transition duration-300">Generate Plan</a>
+                    <a href="chatbot.html" class="text-primary font-medium hover:text-dark transition duration-300">Chatbot</a>
+                    <a href="locate.html" class="text-gray-600 hover:text-primary transition duration-300">Locate</a>
+                    <a href="events.html" class="text-gray-600 hover:text-primary transition duration-300">Events</a>
+                    <a href="demos.html" class="text-gray-600 hover:text-primary transition duration-300">Demos</a>
+                    <a href="about.html" class="text-gray-600 hover:text-primary transition duration-300">About Us</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-primary transition duration-300">Contact Us</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-primary focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <a href="index.html" class="block py-2 text-gray-600 hover:text-primary">Home</a>
+                <a href="generate.html" class="block py-2 text-gray-600 hover:text-primary">Generate Plan</a>
+                <a href="chatbot.html" class="block py-2 text-primary font-medium">Chatbot</a>
+                <a href="locate.html" class="block py-2 text-gray-600 hover:text-primary">Locate</a>
+                <a href="events.html" class="block py-2 text-gray-600 hover:text-primary">Events</a>
+                <a href="demos.html" class="block py-2 text-gray-600 hover:text-primary">Demos</a>
+                <a href="about.html" class="block py-2 text-gray-600 hover:text-primary">About Us</a>
+                <a href="contact.html" class="block py-2 text-gray-600 hover:text-primary">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Chatbot Hero Section -->
+    <section class="py-16 bg-gradient-to-r from-primary/10 to-secondary">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-dark mb-4">Chat with FitAi Assistant</h1>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our AI fitness companion can answer your questions, provide workout tips, and help you stay motivated on your fitness journey.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Chatbot Interface -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-stretch">
+                <div class="lg:w-3/4 lg:pr-8 mb-8 lg:mb-0">
+                    <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden h-[600px] flex flex-col">
+                        <div class="bg-primary p-4 text-white flex items-center">
+                            <div class="mr-3 bg-white rounded-full w-10 h-10 flex items-center justify-center">
+                                <img src="FitAi.png" alt="FitAi Logo" class="h-6">
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">FitAi Assistant</h3>
+                                <p class="text-xs text-white/80">Online • Ready to help</p>
+                            </div>
+                        </div>
+                          <div id="chat-messages" class="flex-grow p-4 overflow-y-auto space-y-4">
+                            <div class="bg-primary/20 p-3 rounded-lg max-w-md">
+                                <p class="text-dark">👋 Hi, I am FitAi how may I assist you today?</p>
+                            </div>
+                            <!-- Conversation will be dynamically generated -->
+                        </div>
+                          <div class="p-4 border-t">
+                            <div class="flex">
+                                <input type="text" id="chat-input" placeholder="Ask me anything about fitness..." class="flex-grow p-3 border border-gray-300 rounded-l-full focus:outline-none focus:ring-1 focus:ring-primary">
+                                <button id="send-chat" class="bg-primary text-white px-6 py-3 rounded-r-full hover:bg-dark transition">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                  <div class="lg:w-1/4 bg-gray-50 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-dark mb-4">Popular Topics</h3>
+                    <div class="space-y-2">
+                        <button class="popular-topic w-full text-left p-2 rounded-full bg-white hover:bg-primary/10 transition border border-gray-200">
+                            How many calories should I eat?
+                        </button>
+                        <button class="popular-topic w-full text-left p-2 rounded-full bg-white hover:bg-primary/10 transition border border-gray-200">
+                            Best exercises for weight loss?
+                        </button>
+                        <button class="popular-topic w-full text-left p-2 rounded-full bg-white hover:bg-primary/10 transition border border-gray-200">
+                            How often should I work out?
+                        </button>
+                        <button class="popular-topic w-full text-left p-2 rounded-full bg-white hover:bg-primary/10 transition border border-gray-200">
+                            Tips for muscle growth?
+                        </button>
+                        <button class="popular-topic w-full text-left p-2 rounded-full bg-white hover:bg-primary/10 transition border border-gray-200">
+                            How to improve flexibility?
+                        </button>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-dark mt-8 mb-4">Features</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-primary mt-1 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span class="text-gray-700">24/7 Fitness Guidance</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-primary mt-1 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span class="text-gray-700">Personalized Workout Advice</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-primary mt-1 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span class="text-gray-700">Nutrition Recommendations</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-primary mt-1 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span class="text-gray-700">Goal Tracking Assistance</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-primary mt-1 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span class="text-gray-700">Science-Based Information</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-16 bg-primary/5">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-dark mb-4">Benefits of FitAi Chatbot</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Why our AI assistant is the perfect companion for your fitness journey</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark mb-2">24/7 Availability</h3>
+                    <p class="text-gray-600">Get answers and guidance whenever you need it, day or night, no appointment necessary.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark mb-2">Science-Based</h3>
+                    <p class="text-gray-600">All advice is grounded in exercise science and evidence-based practices, not fads or trends.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark mb-2">Personalized</h3>
+                    <p class="text-gray-600">Get tailored advice based on your goals, fitness level, and unique circumstances.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark mb-2">Motivational</h3>
+                    <p class="text-gray-600">Stay inspired with encouragement, progress tracking, and motivational tips when you need them most.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center">
+                        <img src="FitAi.png" alt="FitAi Logo" class="h-8 mr-3">
+                        <span class="text-white font-bold text-xl">FitAi</span>
+                    </div>
+                    <p class="text-gray-300 mt-2 max-w-xs">Transforming fitness through AI innovation and personalized guidance.</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                        <ul class="space-y-2">
+                            <li><a href="index.html" class="text-gray-300 hover:text-white transition">Home</a></li>
+                            <li><a href="generate.html" class="text-gray-300 hover:text-white transition">Generate Plan</a></li>
+                            <li><a href="chatbot.html" class="text-gray-300 hover:text-white transition">Chatbot</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">More Info</h3>
+                        <ul class="space-y-2">
+                            <li><a href="locate.html" class="text-gray-300 hover:text-white transition">Locate</a></li>
+                            <li><a href="about.html" class="text-gray-300 hover:text-white transition">About Us</a></li>
+                            <li><a href="contact.html" class="text-gray-300 hover:text-white transition">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Legal</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-300 hover:text-white transition">Privacy Policy</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition">Terms of Service</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center md:text-left md:flex md:justify-between md:items-center">
+                <p class="text-gray-400">© 2025 FitAi. All rights reserved.</p>
+                <div class="mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white mx-2 transition">Privacy</a>
+                    <a href="#" class="text-gray-400 hover:text-white mx-2 transition">Terms</a>
+                    <a href="#" class="text-gray-400 hover:text-white mx-2 transition">Cookies</a>
+                </div>
+            </div>
+        </div>    </footer>    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="env-preload.js"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+    
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

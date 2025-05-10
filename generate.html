@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Plan - FitAi</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom configuration for Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#10B981', // Green
+                        secondary: '#F9FAFB', // White/Light
+                        dark: '#065F46', // Dark Green
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/generate.css">
+</head>
+<body class="bg-secondary">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-3">
+                <div class="flex items-center">
+                    <img src="FitAi.png" alt="FitAi Logo" class="h-10 mr-3">
+                    <span class="text-green-600 font-bold text-xl">FitAi</span>
+                </div>                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-600 hover:text-primary transition duration-300">Home</a>
+                    <a href="generate.html" class="text-primary font-medium hover:text-dark transition duration-300">Generate Plan</a>
+                    <a href="chatbot.html" class="text-gray-600 hover:text-primary transition duration-300">Chatbot</a>
+                    <a href="locate.html" class="text-gray-600 hover:text-primary transition duration-300">Locate</a>
+                    <a href="events.html" class="text-gray-600 hover:text-primary transition duration-300">Events</a>
+                    <a href="demos.html" class="text-gray-600 hover:text-primary transition duration-300">Demos</a>
+                    <a href="about.html" class="text-gray-600 hover:text-primary transition duration-300">About Us</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-primary transition duration-300">Contact Us</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-primary focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <a href="index.html" class="block py-2 text-gray-600 hover:text-primary">Home</a>
+                <a href="generate.html" class="block py-2 text-primary font-medium">Generate Plan</a>
+                <a href="chatbot.html" class="block py-2 text-gray-600 hover:text-primary">Chatbot</a>
+                <a href="locate.html" class="block py-2 text-gray-600 hover:text-primary">Locate</a>
+                <a href="events.html" class="block py-2 text-gray-600 hover:text-primary">Events</a>
+                <a href="demos.html" class="block py-2 text-gray-600 hover:text-primary">Demos</a>
+                <a href="about.html" class="block py-2 text-gray-600 hover:text-primary">About Us</a>
+                <a href="contact.html" class="block py-2 text-gray-600 hover:text-primary">Contact Us</a>
+            </div>
+        </div>
+    </nav>    <!-- Generate Plan Section -->
+    <section class="py-16 bg-primary/5">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-dark mb-4">Get Your AI-Generated Fitness Plan</h1>
+                <p class="text-gray-600 max-w-2xl mx-auto">Tell us about your goals, preferences, and limitations, and our AI will create a personalized fitness plan just for you.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- Form Card -->
+                <div id="plan-form-container" class="bg-white p-8 rounded-lg shadow-md">
+                    <form id="plan-form" class="space-y-6">
+                        <!-- Personal Information Section -->
+                        <div>
+                            <h2 class="text-2xl font-bold text-dark mb-4">Personal Information</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="first-name" class="block text-gray-700 font-medium mb-2">First Name</label>
+                                    <input type="text" id="first-name" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Your first name">
+                                </div>
+                                <div>
+                                    <label for="last-name" class="block text-gray-700 font-medium mb-2">Last Name</label>
+                                    <input type="text" id="last-name" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Your last name">
+                                </div>
+                                <div>
+                                    <label for="age" class="block text-gray-700 font-medium mb-2">Age</label>
+                                    <input type="number" id="age" min="16" max="100" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Your age">
+                                </div>
+                                <div>
+                                    <label for="gender" class="block text-gray-700 font-medium mb-2">Gender</label>
+                                    <select id="gender" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                        <option value="">Select gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="non-binary">Non-binary</option>
+                                        <option value="prefer-not-to-say">Prefer not to say</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                                <div>
+                                    <label for="height" class="block text-gray-700 font-medium mb-2">Height (cm)</label>
+                                    <input type="number" id="height" min="100" max="250" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Height in centimeters">
+                                </div>
+                                <div>
+                                    <label for="weight" class="block text-gray-700 font-medium mb-2">Weight (kg)</label>
+                                    <input type="number" id="weight" min="30" max="300" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Weight in kilograms">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Sleep Information -->
+                        <div>
+                            <h2 class="text-2xl font-bold text-dark mb-4">Sleep Information</h2>
+                            <div>
+                                <label for="sleep-hours" class="block text-gray-700 font-medium mb-2">Hours of sleep per night: <span id="sleep-hours-value">7</span></label>
+                                <input type="range" id="sleep-hours" min="4" max="12" value="7" step="0.5" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary">
+                                <div class="flex justify-between text-gray-700 mt-1">
+                                    <span>4 hours</span>
+                                    <span>8 hours</span>
+                                    <span>12 hours</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Stress Level -->
+                        <div>
+                            <h2 class="text-2xl font-bold text-dark mb-4">Stress Level</h2>
+                            <div>
+                                <label for="stress-level" class="block text-gray-700 font-medium mb-2">On a scale of 1-10, how would you rate your stress level? <span id="stress-level-value">5</span></label>
+                                <input type="range" id="stress-level" min="1" max="10" value="5" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary">
+                                <div class="flex justify-between text-gray-700 mt-1">
+                                    <span>1 (Low)</span>
+                                    <span>5 (Moderate)</span>
+                                    <span>10 (High)</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Fitness Preferences -->
+                        <div>
+                            <h2 class="text-2xl font-bold text-dark mb-4">Fitness Preferences</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="fitness-goal" class="block text-gray-700 font-medium mb-2">Fitness Goal</label>
+                                    <select id="fitness-goal" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                        <option value="">Select goal</option>
+                                        <option value="weight-loss">Weight Loss</option>
+                                        <option value="muscle-gain">Muscle Gain</option>
+                                        <option value="flexibility">Flexibility</option>
+                                        <option value="general">General Fitness</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="workout-location" class="block text-gray-700 font-medium mb-2">Workout Location</label>
+                                    <select id="workout-location" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                        <option value="">Select location</option>
+                                        <option value="gym">Gym</option>
+                                        <option value="home">Home/Indoors</option>
+                                        <option value="outdoors">Outdoors</option>
+                                    </select>
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label class="block text-gray-700 font-medium mb-2">Dietary Preferences</label>
+                                    <div class="flex items-center mb-2">
+                                        <input type="checkbox" id="vegan" class="form-checkbox text-primary h-5 w-5">
+                                        <label for="vegan" class="ml-2">Vegan</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                          <div class="pt-4">
+                            <button type="submit" class="w-full bg-primary hover:bg-dark text-white font-bold py-3 px-4 rounded-full transition duration-300 ease-in-out">
+                                Submit Health Check
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Results Container (Hidden initially) -->                <div id="plan-results" class="hidden">
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-2xl font-bold text-dark">Your Personalized Fitness Plan</h2>
+                            <button id="download-pdf" class="bg-primary hover:bg-dark text-white font-bold py-2 px-4 rounded-full flex items-center transition duration-300">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                </svg>
+                                Download PDF
+                            </button>
+                        </div>
+                        
+                        <div id="plan-summary" class="mb-8 p-4 bg-primary/10 rounded-lg">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold text-dark mb-4">Weekly Workout Schedule</h3>
+                            <div id="workout-days" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Loading Spinner (Hidden initially) -->
+                <div id="loading-spinner" class="hidden flex flex-col items-center justify-center py-12">
+                    <div class="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4"></div>
+                    <p class="text-gray-700 font-semibold">Generating your personalized plan...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-dark mb-4">How It Works</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our AI analyzes your inputs to create a customized fitness plan that's right for you</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-primary font-bold text-2xl">1</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark mb-2">Share Your Details</h3>
+                    <p class="text-gray-600">Tell us about your fitness goals, experience level, available equipment, and any special considerations.</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-primary font-bold text-2xl">2</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark mb-2">AI Creates Your Plan</h3>
+                    <p class="text-gray-600">Our advanced AI analyzes your inputs and creates a personalized plan based on scientific fitness principles.</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-primary font-bold text-2xl">3</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark mb-2">Start Your Journey</h3>
+                    <p class="text-gray-600">Receive your detailed plan including workouts, scheduling, and progress tracking recommendations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-primary/5">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-dark mb-4">Success Stories</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">See how FitAi has helped people transform their fitness journey</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-primary font-bold">JD</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-dark">John D.</h3>
+                            <p class="text-gray-500 text-sm">Lost 15kg in 6 months</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"FitAi created a workout plan that perfectly matched my busy schedule. The progressive nature of the program kept me challenged but never overwhelmed. I've achieved more than I thought possible!"</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-primary font-bold">SK</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-dark">Sarah K.</h3>
+                            <p class="text-gray-500 text-sm">Improved strength & flexibility</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"As someone with previous injuries, I was hesitant to start working out again. The plan FitAi created was mindful of my limitations while still helping me make incredible progress. I'm stronger than ever!"</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-primary font-bold">MT</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-dark">Michael T.</h3>
+                            <p class="text-gray-500 text-sm">Gained 8kg of muscle</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"The personalized workout plan FitAi created helped me break through plateaus I'd been stuck at for years. The progression was smart and the exercise selection was perfect for my goals. Highly recommended!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center">
+                        <img src="FitAi.png" alt="FitAi Logo" class="h-8 mr-3">
+                        <span class="text-white font-bold text-xl">FitAi</span>
+                    </div>
+                    <p class="text-gray-300 mt-2 max-w-xs">Transforming fitness through AI innovation and personalized guidance.</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                        <ul class="space-y-2">
+                            <li><a href="index.html" class="text-gray-300 hover:text-white transition">Home</a></li>
+                            <li><a href="generate.html" class="text-gray-300 hover:text-white transition">Generate Plan</a></li>
+                            <li><a href="chatbot.html" class="text-gray-300 hover:text-white transition">Chatbot</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">More Info</h3>
+                        <ul class="space-y-2">
+                            <li><a href="locate.html" class="text-gray-300 hover:text-white transition">Locate</a></li>
+                            <li><a href="about.html" class="text-gray-300 hover:text-white transition">About Us</a></li>
+                            <li><a href="contact.html" class="text-gray-300 hover:text-white transition">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Legal</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-300 hover:text-white transition">Privacy Policy</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition">Terms of Service</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center md:text-left md:flex md:justify-between md:items-center">
+                <p class="text-gray-400">© 2025 FitAi. All rights reserved.</p>
+                <div class="mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white mx-2 transition">Privacy</a>
+                    <a href="#" class="text-gray-400 hover:text-white mx-2 transition">Terms</a>
+                    <a href="#" class="text-gray-400 hover:text-white mx-2 transition">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>    <!-- PDF Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="env-preload.js"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+    <script src="plan.js"></script>
+</body>
+</html>

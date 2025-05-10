@@ -1,0 +1,466 @@
+/* FitAi Styles */
+
+/* Global Styles */
+body {
+    background-color: #F9FAFB;
+    color: #1F2937;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Navigation Styles */
+nav {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Pill-shaped active links */
+nav a.text-primary {
+    border-radius: 9999px; /* Pill shape */
+    padding: 0.5rem 1rem;
+    background-color: #10B981;
+    color: white !important;
+    display: inline-block;
+}
+
+/* Make sure active link stays visible when hovered */
+nav a.text-primary:hover {
+    background-color: #0ea271; /* Slightly darker green on hover */
+    color: white !important;
+}
+
+/* Pill-shaped hover effect for nav items */
+nav a.text-gray-600 {
+    padding: 0.5rem 0.5rem;
+    display: inline-block;
+}
+
+nav a.text-gray-600:hover {
+    border-radius: 9999px;
+    background-color: rgba(16, 185, 129, 0.1);
+}
+
+/* Mobile menu items */
+#mobile-menu a.text-primary {
+    border-radius: 9999px;
+    padding: 0.5rem 1rem;
+    background-color: #10B981;
+    color: white !important;
+    display: inline-block;
+    margin: 0.25rem 0;
+}
+
+#mobile-menu a.text-gray-600:hover {
+    border-radius: 9999px;
+    background-color: rgba(16, 185, 129, 0.1);
+}
+
+.nav-active {
+    background-color: #10B981;
+    color: white !important;
+    border-radius: 9999px; /* Pill shape */
+    padding: 0.5rem 1rem;
+}
+
+/* Hero Section */
+.hero-bg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Feature Cards */
+.feature-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Green flowing animation for feature cards */
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background: linear-gradient(to bottom, 
+        rgba(16, 185, 129, 0.01) 0%,
+        rgba(16, 185, 129, 0.05) 25%, 
+        rgba(16, 185, 129, 0.05) 75%,
+        rgba(16, 185, 129, 0.01) 100%);
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Green line animation */
+.feature-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(to bottom, #10B981, #34D399, #10B981);
+    transform: scaleY(0);
+    transform-origin: top center;
+    transition: transform 0.5s ease;
+    z-index: 1;
+}
+
+.feature-card:hover::after {
+    transform: scaleY(1);
+    transform-origin: bottom center;
+}
+
+.feature-card:hover::before {
+    opacity: 1;
+    animation: greenFlow 3s ease-in-out infinite;
+}
+
+@keyframes greenFlow {
+    0% {
+        transform: translateY(-50%);
+    }
+    100% {
+        transform: translateY(50%);
+    }
+}
+
+/* Make sure card content stays above the animation */
+.feature-card > div {
+    position: relative;
+    z-index: 1;
+}
+
+/* Custom Button Styles */
+.btn-primary {
+    background-color: #10B981;
+    color: white;
+    border: 4px solid #055e40; 
+    transition: background-color 0.3s ease;
+    border-radius: 9999px; /* Pill shape */
+    padding: 0.75rem 1.5rem;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background-color: #065F46;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #055e40;
+    border: 4px solid #055e40;
+    transition: all 0.3s ease;
+    border-radius: 9999px; /* Pill shape */
+    padding: 0.75rem 1.5rem;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-secondary:hover {
+    background-color: #10B981;
+    color: white;
+}
+
+/* Testimonial Section */
+.testimonial-card {
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: scale(1.03);
+}
+
+/* Footer */
+footer {
+    background-color: #1F2937;
+}
+
+/* Chatbot Styling */
+.chat-container {
+    background: rgba(249, 250, 251, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(229, 231, 235, 0.5);
+}
+
+.chat-message {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.popular-topic {
+    transition: background-color 0.3s ease;
+}
+
+.popular-topic:hover {
+    background-color: #D1FAE5;
+}
+
+/* Team member card */
+.team-member-card {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.team-member-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.team-member-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, #10B981, #34D399, #10B981);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.5s ease;
+}
+
+.team-member-card:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.loading-dots span {
+    animation: loadingDots 1.4s infinite ease-in-out;
+    background-color: #10B981;
+    border-radius: 50%;
+    display: inline-block;
+    height: 8px;
+    margin-right: 4px;
+    width: 8px;
+}
+
+/* Map and location styles */
+.user-marker {
+    z-index: 10;
+}
+
+.poi-marker {
+    z-index: 5;
+}
+
+.result-card {
+    cursor: pointer;
+}
+
+.result-card:hover {
+    background-color: #F9FAFB;
+}
+
+/* Fix for TomTom map display */
+#map-container {
+    width: 100%;
+    height: 500px;
+    position: relative !important;
+}
+
+#map-container canvas,
+#map-container .mapboxgl-canvas-container {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.mapboxgl-canvas {
+    position: absolute !important;
+    left: 0;
+    top: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.spinner-border {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    vertical-align: text-bottom;
+    border: 0.2em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spinner-border .75s linear infinite;
+}
+
+@keyframes spinner-border {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes loadingDots {
+    0%, 80%, 100% { 
+        transform: scale(0);
+    }
+    40% { 
+        transform: scale(1);
+    }
+}
+
+.loading-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loading-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes loadingDots {
+    0%, 80%, 100% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Loading spinner for map and resource searches */
+.spinner-border {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    vertical-align: text-bottom;
+    border: 0.25em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.75s linear infinite;
+}
+
+/* Animate loading spinner */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Map Styles */
+.marker-popup {
+    font-family: 'Inter', sans-serif;
+}
+
+.marker-popup h3 {
+    font-weight: 600;
+    color: #10B981;
+    margin-bottom: 0.5rem;
+}
+
+.marker-popup p {
+    margin: 0.25rem 0;
+    color: #4B5563;
+}
+
+/* Rating stars for search results */
+.stars-container {
+    display: inline-flex;
+    align-items: center;
+}
+
+.star {
+    color: #F59E0B;
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Workout plan styles */
+.workout-card {
+    border-left: 4px solid #10B981;
+    transition: transform 0.2s ease;
+}
+
+.workout-card:hover {
+    transform: translateX(5px);
+}
+
+/* Results display styling */
+.result-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.result-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* PIN Code marker styling */
+.pin-marker {
+    cursor: pointer;
+    animation: pulse 2s infinite;
+}
+
+.pin-marker:hover {
+    animation: none;
+    transform: scale(1.1);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* PIN Code Search Enhancements */
+.pin-code-marker {
+    width: 36px;
+    height: 36px;
+    background-color: #4338ca;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    position: relative;
+    transform-origin: bottom center;
+}
+
+.pin-code-marker::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid #4338ca;
+}
+
+.pin-code-marker svg {
+    width: 20px;
+    height: 20px;
+}

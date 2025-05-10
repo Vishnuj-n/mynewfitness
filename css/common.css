@@ -1,0 +1,200 @@
+/* Common styles for all FitAi pages */
+
+/* Global Styles */
+body {
+    background-color: #F9FAFB;
+    color: #1F2937;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Navigation Styles */
+nav {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Pill-shaped active links */
+nav a.text-primary {
+    border-radius: 9999px; /* Pill shape */
+    padding: 0.5rem 1rem;
+    background-color: #10B981;
+    color: white !important;
+    display: inline-block;
+}
+
+/* Make sure active link stays visible when hovered */
+nav a.text-primary:hover {
+    background-color: #0ea271; /* Slightly darker green on hover */
+    color: white !important;
+}
+
+/* Pill-shaped hover effect for nav items */
+nav a.text-gray-600 {
+    padding: 0.5rem 0.5rem;
+    display: inline-block;
+}
+
+nav a.text-gray-600:hover {
+    border-radius: 9999px;
+    background-color: rgba(16, 185, 129, 0.1);
+}
+
+/* Mobile menu items */
+#mobile-menu a.text-primary {
+    border-radius: 9999px;
+    padding: 0.5rem 1rem;
+    background-color: #10B981;
+    color: white !important;
+    display: inline-block;
+    margin: 0.25rem 0;
+}
+
+#mobile-menu a.text-gray-600:hover {
+    border-radius: 9999px;
+    background-color: rgba(16, 185, 129, 0.1);
+}
+
+.nav-active {
+    background-color: #10B981;
+    color: white !important;
+    border-radius: 9999px; /* Pill shape */
+    padding: 0.5rem 1rem;
+}
+
+/* Footer */
+footer {
+    background-color: #1F2937;
+}
+
+/* Custom Button Styles */
+.btn-primary {
+    background-color: #10B981;
+    color: white;
+    transition: background-color 0.3s ease;
+    border-radius: 9999px; /* Pill shape */
+    padding: 0.75rem 1.5rem;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background-color: #065F46;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #10B981;
+    border: 2px solid #10B981;
+    transition: all 0.3s ease;
+    border-radius: 9999px; /* Pill shape */
+    padding: 0.75rem 1.5rem;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-secondary:hover {
+    background-color: #10B981;
+    color: white;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading spinner */
+.spinner-border {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    vertical-align: text-bottom;
+    border: 0.25em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Loading dots */
+.loading-dots span {
+    animation: loadingDots 1.4s infinite ease-in-out;
+    background-color: #10B981;
+    border-radius: 50%;
+    display: inline-block;
+    height: 8px;
+    margin-right: 4px;
+    width: 8px;
+}
+
+.loading-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loading-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes loadingDots {
+    0%, 80%, 100% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Animations for notifications and modals */
+.animate__animated {
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+.animate__fadeInUp {
+    animation-name: fadeInUp;
+}
+
+.animate__fadeOutDown {
+    animation-name: fadeOutDown;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeOutDown {
+    from {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+}

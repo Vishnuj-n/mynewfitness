@@ -1,0 +1,20 @@
+/* Styles specific to the chatbot page */
+
+/* Chatbot Styling */
+.chat-container {
+    background: rgba(249, 250, 251, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(229, 231, 235, 0.5);
+}
+
+.chat-message {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.popular-topic {
+    transition: background-color 0.3s ease;
+}
+
+.popular-topic:hover {
+    background-color: #D1FAE5;
+}

@@ -1,0 +1,126 @@
+/* Styles specific to the locate page */
+
+/* Map and location styles */
+.user-marker {
+    z-index: 10;
+}
+
+.poi-marker {
+    z-index: 5;
+}
+
+.result-card {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.result-card:hover {
+    background-color: #F9FAFB;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Fix for TomTom map display */
+#map-container {
+    width: 100%;
+    height: 500px;
+    position: relative !important;
+}
+
+#map-container canvas,
+#map-container .mapboxgl-canvas-container {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.mapboxgl-canvas {
+    position: absolute !important;
+    left: 0;
+    top: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Map Styles */
+.marker-popup {
+    font-family: 'Inter', sans-serif;
+}
+
+.marker-popup h3 {
+    font-weight: 600;
+    color: #10B981;
+    margin-bottom: 0.5rem;
+}
+
+.marker-popup p {
+    margin: 0.25rem 0;
+    color: #4B5563;
+}
+
+/* Rating stars for search results */
+.stars-container {
+    display: inline-flex;
+    align-items: center;
+}
+
+.star {
+    color: #F59E0B;
+    width: 1rem;
+    height: 1rem;
+}
+
+/* PIN Code marker styling */
+.pin-marker {
+    cursor: pointer;
+    animation: pulse 2s infinite;
+}
+
+.pin-marker:hover {
+    animation: none;
+    transform: scale(1.1);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* PIN Code Search Enhancements */
+.pin-code-marker {
+    width: 36px;
+    height: 36px;
+    background-color: #4338ca;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    position: relative;
+    transform-origin: bottom center;
+}
+
+.pin-code-marker::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid #4338ca;
+}
+
+.pin-code-marker svg {
+    width: 20px;
+    height: 20px;
+}

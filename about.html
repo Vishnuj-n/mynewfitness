@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - FitAi</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom configuration for Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#10B981', // Green
+                        secondary: '#F9FAFB', // White/Light
+                        dark: '#065F46', // Dark Green
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/about.css">
+</head>
+<body class="bg-secondary">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-3">
+                <div class="flex items-center">
+                    <img src="FitAi.png" alt="FitAi Logo" class="h-10 mr-3">
+                    <span class="text-green-600 font-bold text-xl">FitAi</span>
+                </div>                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-600 hover:text-primary transition duration-300">Home</a>
+                    <a href="generate.html" class="text-gray-600 hover:text-primary transition duration-300">Generate Plan</a>
+                    <a href="chatbot.html" class="text-gray-600 hover:text-primary transition duration-300">Chatbot</a>
+                    <a href="locate.html" class="text-gray-600 hover:text-primary transition duration-300">Locate</a>
+                    <a href="events.html" class="text-gray-600 hover:text-primary transition duration-300">Events</a>
+                    <a href="demos.html" class="text-gray-600 hover:text-primary transition duration-300">Demos</a>
+                    <a href="about.html" class="text-primary font-medium hover:text-dark transition duration-300">About Us</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-primary transition duration-300">Contact Us</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-primary focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <a href="index.html" class="block py-2 text-gray-600 hover:text-primary">Home</a>
+                <a href="generate.html" class="block py-2 text-gray-600 hover:text-primary">Generate Plan</a>
+                <a href="chatbot.html" class="block py-2 text-gray-600 hover:text-primary">Chatbot</a>
+                <a href="locate.html" class="block py-2 text-gray-600 hover:text-primary">Locate</a>
+                <a href="events.html" class="block py-2 text-gray-600 hover:text-primary">Events</a>
+                <a href="demos.html" class="block py-2 text-gray-600 hover:text-primary">Demos</a>
+                <a href="about.html" class="block py-2 text-primary font-medium">About Us</a>
+                <a href="contact.html" class="block py-2 text-gray-600 hover:text-primary">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Hero Section -->
+    <section class="py-16 bg-gradient-to-r from-primary/10 to-secondary">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-dark mb-4">About FitAi</h1>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our mission, values, and the team behind the technology that's transforming fitness</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Team Working" class="rounded-lg shadow-xl max-w-full h-auto">
+                </div>
+                <div class="md:w-1/2 md:pl-12">
+                    <h2 class="text-3xl font-bold text-dark mb-6">Our Story</h2>
+                    <p class="text-gray-700 mb-4">FitAi was founded in 2025 by a Student of CMR Institute of Technology who speacializes in LLM & ML specialists who recognized that personalized fitness guidance should be accessible to everyone, not just those who can afford expensive personal trainers.</p>
+                    <p class="text-gray-700 mb-4">We started with a simple question: <span class="font-semibold text-dark">"How can we make expert fitness guidance available to everyone?"</span> The answer was artificial intelligence that could analyze individual needs and goals to create truly personalized fitness experiences.</p>
+                    <p class="text-gray-700">Today, FitAi combines scientific research in exercise physiology with cutting-edge artificial intelligence to create adaptive fitness plans that evolve as you progress. We're proud to have helped thousands of people transform their fitness journeys and reach goals they once thought impossible.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values Section -->
+    <section class="py-16 bg-primary/5">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-dark mb-4">Our Values</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">The principles that guide everything we do at FitAi</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark mb-2">Personalization</h3>
+                    <p class="text-gray-600">Every fitness journey is unique, and our technology reflects that by creating truly personalized experiences for each user.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark mb-2">Accessibility</h3>
+                    <p class="text-gray-600">Making professional-quality fitness guidance available to everyone, regardless of location or socioeconomic status.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark mb-2">Science-Based</h3>
+                    <p class="text-gray-600">Our recommendations are grounded in exercise science and research, not fads, trends, or untested theories.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark mb-2">Continuous Improvement</h3>
+                    <p class="text-gray-600">We're always learning and evolving, just like our users, by incorporating new research and feedback into our platform.</p>
+                </div>
+            </div>
+        </div>
+    </section>    <!-- Team Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-dark mb-4">Meet Our Team</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">The dedicated professionals who make FitAi possible</p>
+            </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Team Member 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center team-member-card">
+                    <div class="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-primary font-bold text-2xl">PM</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark mb-1">Priyanshu Madhup</h3>
+                    <p class="text-primary text-sm mb-3">Founder & Student</p>
+                    <p class="text-gray-800 text-dark mb-3">CMR Institute of Technology</p>
+                    <p class="text-gray-600">LLM specialist with extensive experience in machine learning and personalization algorithms.</p>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center team-member-card">
+                    <div class="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-primary font-bold text-2xl">VM</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark mb-1">Vishnu M</h3>
+                    <p class="text-primary text-sm mb-3">Features & Execution Lead</p>
+                    <p class="text-gray-800 text-dark mb-3">CMR Institute of Technology</p>
+                    <p class="text-gray-600">Expert in fitness related features and logic generation.</p>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center team-member-card">
+                    <div class="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-primary font-bold text-2xl">VJ</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark mb-1">Vishnu J Narayanan</h3>
+                    <p class="text-primary text-sm mb-3">Deplyment & Production Spcialist</p>
+                    <p class="text-gray-800 text-dark mb-3">Atria Institute of Technology</p>
+                    <p class="text-gray-600">Specializes in deploying websites with various parameters and managing versions of the website.</p>
+                </div>
+                
+                <!-- Team Member 4 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center team-member-card">
+                    <div class="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-primary font-bold text-2xl">RP</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark mb-1">Raval Param</h3>
+                    <p class="text-primary text-sm mb-3">UX/UI Designer</p>
+                    <p class="text-gray-800 text-dark mb-3">CMR Institute of Technology</p>
+                    <p class="text-gray-600">Creates intuitive, accessible interfaces that make fitness technology approachable for users of all levels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="py-16 bg-primary/5">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-dark mb-4">Our Impact</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">The difference FitAi is making in the world of fitness</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-4xl font-bold text-primary mb-2">500k+</div>
+                    <p class="text-dark">Active Users</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-4xl font-bold text-primary mb-2">10M+</div>
+                    <p class="text-dark">Workouts Generated</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-4xl font-bold text-primary mb-2">85%</div>
+                    <p class="text-dark">User Goal Achievement</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-4xl font-bold text-primary mb-2">42</div>
+                    <p class="text-dark">Countries Reached</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center">
+                        <img src="FitAi.png" alt="FitAi Logo" class="h-8 mr-3">
+                        <span class="text-white font-bold text-xl">FitAi</span>
+                    </div>
+                    <p class="text-gray-300 mt-2 max-w-xs">Transforming fitness through AI innovation and personalized guidance.</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                        <ul class="space-y-2">
+                            <li><a href="index.html" class="text-gray-300 hover:text-white transition">Home</a></li>
+                            <li><a href="generate.html" class="text-gray-300 hover:text-white transition">Generate Plan</a></li>
+                            <li><a href="chatbot.html" class="text-gray-300 hover:text-white transition">Chatbot</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">More Info</h3>
+                        <ul class="space-y-2">
+                            <li><a href="locate.html" class="text-gray-300 hover:text-white transition">Locate</a></li>
+                            <li><a href="about.html" class="text-gray-300 hover:text-white transition">About Us</a></li>
+                            <li><a href="contact.html" class="text-gray-300 hover:text-white transition">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Legal</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-300 hover:text-white transition">Privacy Policy</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition">Terms of Service</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center md:text-left md:flex md:justify-between md:items-center">
+                <p class="text-gray-400">© 2025 FitAi. All rights reserved.</p>
+                <div class="mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white mx-2 transition">Privacy</a>
+                    <a href="#" class="text-gray-400 hover:text-white mx-2 transition">Terms</a>
+                    <a href="#" class="text-gray-400 hover:text-white mx-2 transition">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "fitai",
+  "version": "1.0.0",
+  "description": "AI-Powered Fitness Website",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve",
+    "build": "echo \"No build step required - static website\" && exit 0"
+  },
+  "keywords": [
+    "fitness",
+    "AI",
+    "workout",
+    "health"
+  ],
+  "author": "Priyanshu Madhup",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "serve": "^14.2.0"
+  }
+}

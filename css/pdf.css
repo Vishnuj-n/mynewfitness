@@ -1,0 +1,20 @@
+/* Styles specific to the PDF generation page */
+
+/* PDF styling */
+.pdf-container {
+    background-color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.pdf-header {
+    border-bottom: 2px solid #10B981;
+}
+
+.pdf-exercise {
+    border-left: 3px solid #10B981;
+    transition: background-color 0.3s ease;
+}
+
+.pdf-exercise:hover {
+    background-color: #F3F4F6;
+}
